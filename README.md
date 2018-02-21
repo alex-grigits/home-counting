@@ -6,6 +6,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `npm run dev` for a dev server and json-server. The app will automatically navigate to `http://localhost:4200/` and reload if you change any of the source files.
 
+## JSON Server
+Resources:
+
+GET http://localhost:3000/users
+
+GET http://localhost:3000/bill
+
+GET http://localhost:3000/categories
+
+GET http://localhost:3000/events
+
+Home http://localhost:3000
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
