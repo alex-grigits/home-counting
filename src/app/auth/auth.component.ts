@@ -8,10 +8,17 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  title = 'In';
+
+  constructor(private router: Router) {
+
+  }
 
   ngOnInit() {
-    // this.router.navigate(['login']);
+    this.router.navigate(['login']);
+    this.router.events.subscribe(event => {
+      this.title = this.router.url === '/login' ? 'In' : 'Up';
+    });
   }
 
 }

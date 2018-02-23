@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { UsersService } from './shared/services/users.service';
+import { AuthService } from './shared/services/auth.service';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { UsersService } from './shared/services/users.service';
     HttpClientModule
   ],
   providers: [
-    UsersService
+    UsersService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

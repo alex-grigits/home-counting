@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { User } from '../../shared/models/user.model';
 import { UsersService } from '../../shared/services/users.service';
 import { Notice } from '../../shared/models/notice.model';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,11 @@ export class LoginComponent implements OnInit {
   user: User;
   notice: Notice;
 
-  constructor(private usersService: UsersService) { }
+  constructor(
+    private usersService: UsersService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.notice = new Notice('danger', '');
@@ -33,7 +39,9 @@ export class LoginComponent implements OnInit {
       .subscribe((user: User) => {
         if (user) {
           if (user.password === formData.password) {
-            this.showNotice('success', 'Welcome :)');
+            this.notice.text = '';
+            this.authService.login();
+            window.localStorage.setItem('user', JSON.stringify(user));
           } else {
             this.showNotice('warning', 'Password is wrong!!!');
           }
