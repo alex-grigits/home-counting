@@ -1,5 +1,32 @@
-.invalid-feedback,
-.valid-feedback {
+@import '~sass/variables';
+
+.invalid-tooltip,
+.valid-tooltip {
     display: block;
     position: absolute;
+    top: 100%;
+}
+
+// .ng-invalid {
+//     border-color: #dc3545;
+// }
+
+// .ng-valid {
+//     border-color: #28a745;
+// }
+
+
+.ng-valid.ng-dirty  {
+    border-color: $success; /* green */
+}
+.ng-invalid.ng-dirty  {
+    border-color: $danger; /* red */
+}
+
+div[class^='col'] {
+    position: relative;
+}
+
+.modal-header {
+    justify-content: center;
 }

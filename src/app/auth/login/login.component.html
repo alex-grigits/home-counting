@@ -1,42 +1,63 @@
-<p class="text-xs-center">Войдите для работы</p>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input
-            type="text"
-            class="form-control underlined custom-control"
-            id="email"
-            placeholder="Введите ваш email"
-            formControlName="email"
-        >
-        <div class="invalid-feedback" *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
-            Please enter a unique and valid email.
+    <div class="form-group row mb-4">
+        <label class="col-sm-3 col-form-label" for="email">Email</label>
+        <div class="col-sm-9">
+            <input
+                type="text"
+                class="form-control"
+                id="email"
+                placeholder="Enter your email"
+                formControlName="email"
+            >
+            <div class="invalid-tooltip text-center"
+                *ngIf="loginForm.get('email').invalid && loginForm.get('email').dirty">
+                <span *ngIf="loginForm.get('email').dirty && !loginForm.get('email')['value']">
+                    This is a required field!
+                </span>
+                <span *ngIf="loginForm.get('email')['errors']['email']
+                    && loginForm.get('email').dirty
+                    && loginForm.get('email')['value']">
+                    Please enter a valid email!
+                </span>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label for="password">Пароль</label>
-        <input
-            type="password"
-            class="form-control underlined custom-control"
-            id="password"
-            placeholder="Пароль"
-            formControlName="password"
-        >
-        <div class="invalid-feedback" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
-            Please choose a unique and valid username.
+    <div class="form-group row mb-5 mb-sm-4">
+        <label class="col-sm-3 col-form-label"
+            for="password">Password</label>
+        <div class="col-sm-9">
+            <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Enter your password"
+                formControlName="password"
+            >
+            <div class="invalid-tooltip text-center"
+                *ngIf="loginForm.get('password').invalid
+                    && loginForm.get('password').dirty">
+                <span *ngIf="loginForm.get('password')['value']">
+                    Please enter at least {{loginForm.get('password')['errors']['minlength']['requiredLength']}} characters.
+                    You entered just {{loginForm.get('password')['errors']['minlength']['actualLength']}}
+                </span>
+                <span *ngIf="!loginForm.get('password')['value']">
+                    This is a required field!
+                </span>
+            </div>
         </div>
     </div>
     <div class="form-group">
         <button
             type="submit"
             class="btn btn-block btn-primary"
-            [disabled]="loginForm.invalid">
-            Войти
+            [disabled]="loginForm.invalid"
+            >
+            Sign In
         </button>
     </div>
     <div class="form-group">
-        <p class="text-muted text-xs-center">
-            Нет аккаунта? <a href="#">Зарегистрироваться!</a>
+        <p class="text-muted text-right">
+            No account yet? <a href="#">Registration!</a>
         </p>
     </div>
 </form>
