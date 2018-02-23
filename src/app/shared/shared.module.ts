@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UsersService } from './services/users.service';
 
 @NgModule({
     imports: [
@@ -9,7 +10,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     exports: [
         ReactiveFormsModule,
         FormsModule
-    ]
+    ],
+    providers: [
+      UsersService
+    ],
 })
 
 export class SharedModule {}

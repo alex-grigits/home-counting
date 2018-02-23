@@ -7,13 +7,11 @@
     top: 100%;
 }
 
-// .ng-invalid {
-//     border-color: #dc3545;
-// }
-
-// .ng-valid {
-//     border-color: #28a745;
-// }
+.alert {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+}
 
 
 .ng-valid.ng-dirty  {
