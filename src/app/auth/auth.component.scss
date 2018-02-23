@@ -2,4 +2,5 @@
 
 .modal {
     display: block;
+    background-color: lighten($color: $primary, $amount: 10);
 }
