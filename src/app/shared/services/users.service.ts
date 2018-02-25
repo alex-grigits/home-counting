@@ -18,8 +18,15 @@ export class UsersService {
                 map(users => users[0]),
                 tap(h => {
                     const outcome = h ? `user` : `did not find`;
-                    console.log(`${outcome} hero email=${email}`);
+                    console.log(`${outcome} email=${email}`);
                 })
+            );
+    }
+
+    createNewUser(user: User): Observable<User> {
+        return this.http.post<User>('http://localhost:3000/users', user)
+            .pipe(
+                tap((hero: User) => console.log(`added user w/ id=${user.name}`))
             );
     }
 }
