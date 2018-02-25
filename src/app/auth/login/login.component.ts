@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { User } from '../../shared/models/user.model';
 import { UsersService } from '../../shared/services/users.service';
@@ -22,11 +22,20 @@ export class LoginComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.notice = new Notice('danger', '');
+
+    this.route.queryParams
+      .subscribe((params: Params) => {
+        if (params['canLogin']) {
+          this.showNotice('success', 'Now you can Log in :)');
+        }
+      });
+
     this.loginForm = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
@@ -42,6 +51,7 @@ export class LoginComponent implements OnInit {
             this.notice.text = '';
             this.authService.login();
             window.localStorage.setItem('user', JSON.stringify(user));
+            // this.router.navigate(['/dashboard']);
           } else {
             this.showNotice('warning', 'Password is wrong!!!');
           }
