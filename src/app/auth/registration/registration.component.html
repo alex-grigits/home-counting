@@ -1,0 +1,98 @@
+<form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+	<div class="form-group row mb-4">
+		<label class="col-sm-3 col-form-label" for="email">Email</label>
+		<div class="col-sm-9">
+			<input
+				type="text"
+				class="form-control underlined"
+				id="email"
+				placeholder="Enter your email"
+				formControlName="email"
+			>
+			<div class="invalid-tooltip text-center"
+				*ngIf="regForm.get('email').invalid && regForm.get('email').dirty">
+				<span *ngIf="regForm.get('email').dirty && !regForm.get('email')['value']">
+					This is a required field!
+				</span>
+				<span *ngIf="regForm.get('email')['errors']['email']
+					&& regForm.get('email').dirty
+					&& regForm.get('email')['value']">
+					Please enter a valid email!
+				</span>
+				<span *ngIf="regForm.get('email')['errors']['forbiddenEmail']
+                    && regForm.get('email')['value']">
+                    Email is already taken!
+                </span>
+			</div>
+		</div>
+	</div>
+	<div class="form-group row mb-4">
+		<label class="col-sm-3 col-form-label" for="password">Password</label>
+		<div class="col-sm-9">
+			<input
+				type="password"
+				class="form-control underlined"
+				id="password"
+				placeholder="Enter your password"
+				formControlName="password"
+			>
+			<div class="invalid-tooltip text-center"
+				*ngIf="regForm.get('password').invalid
+					&& regForm.get('password').dirty">
+				<span *ngIf="regForm.get('password')['value']">
+					Please enter at least {{regForm.get('password')['errors']['minlength']['requiredLength']}} characters.
+					You entered just {{regForm.get('password')['errors']['minlength']['actualLength']}}
+				</span>
+				<span *ngIf="!regForm.get('password')['value']">
+					This is a required field!
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="form-group row mb-4">
+		<label class="col-sm-3 col-form-label" for="name">Name</label>
+		<div class="col-sm-9">
+			<input
+				type="text"
+				class="form-control underlined"
+				id="name"
+				placeholder="Enter your name"
+				formControlName="name"
+			>
+			<div class="invalid-tooltip text-center"
+				*ngIf="regForm.get('name').invalid && regForm.get('name').dirty">
+				<span *ngIf="regForm.get('name').dirty && !regForm.get('name')['value']">
+					This is a required field!
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="agree">
+			<input
+				class="checkbox"
+				id="agree"
+				type="checkbox"
+				formControlName="agree"
+			>
+			<span>I agree with the rules</span>
+		</label>
+	</div>
+	<div class="form-group">
+		<button
+			type="submit"
+			class="btn btn-block btn-primary"
+			[disabled]="regForm.invalid"
+			>
+			Registration
+		</button>
+	</div>
+	<div class="form-group">
+		<p class="text-muted text-xs-center">
+			Already have an account?
+			<a [routerLink]="'/login'">
+				Sign In!
+			</a>
+		</p>
+	</div>
+</form>
