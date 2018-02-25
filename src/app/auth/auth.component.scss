@@ -1,0 +1,23 @@
+@import '~sass/variables';
+
+
+
+.modal {
+    display: block;
+    background-color: lighten($color: $primary, $amount: 10);
+}
+
+.header-img {
+    max-width: 42px;
+    height: auto;
+}
+
+.modal-title {
+    font-size: 1.2rem;
+}
+
+@media screen and (min-width: 410px) {
+    .modal-title {
+        font-size: 1.75rem;
+    }
+}
