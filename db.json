@@ -2,63 +2,9 @@
   "users": [
     {
       "id": 1,
-      "email": "wfm@mail.ru",
-      "password": "12345678",
-      "name": "Администратор"
-    },
-    {
-      "email": "bla-bla@mail.com",
-      "password": "12345678",
-      "name": "User",
-      "id": 2
-    },
-    {
       "email": "test@mail.com",
-      "password": "qwerty123",
-      "name": "Tester",
-      "id": 3
-    },
-    {
-      "email": "1234@gmail.com",
       "password": "123123",
-      "name": "qwerty",
-      "id": 4
-    },
-    {
-      "email": "alex@gmail.com",
-      "password": "alex123",
-      "name": "Alex",
-      "id": 5
-    },
-    {
-      "email": "1qwerty@mail.org",
-      "password": "112332123",
-      "name": "1234",
-      "id": 6
-    },
-    {
-      "email": "ts.alex85@gmail.com",
-      "password": "123123",
-      "name": "Alex",
-      "id": 7
-    },
-    {
-      "email": "john.connor@gmail.com",
-      "password": "123123",
-      "name": "John",
-      "id": 8
-    },
-    {
-      "email": "adam@mail.com",
-      "password": "123123",
-      "name": "Adam",
-      "id": 9
-    },
-    {
-      "email": "house@gmail.com",
-      "password": "123123",
-      "name": "Gregory",
-      "id": 10
+      "name": "Test"
     }
   ],
   "bill": {

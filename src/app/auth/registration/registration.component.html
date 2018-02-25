@@ -19,6 +19,10 @@
 					&& regForm.get('email')['value']">
 					Please enter a valid email!
 				</span>
+				<span *ngIf="regForm.get('email')['errors']['forbiddenEmail']
+                    && regForm.get('email')['value']">
+                    Email is already taken!
+                </span>
 			</div>
 		</div>
 	</div>

@@ -21,7 +21,6 @@
                     This is a required field!
                 </span>
                 <span *ngIf="loginForm.get('email')['errors']['email']
-                    && loginForm.get('email').dirty
                     && loginForm.get('email')['value']">
                     Please enter a valid email!
                 </span>

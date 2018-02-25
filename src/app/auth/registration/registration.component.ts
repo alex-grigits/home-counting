@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UsersService } from '../../shared/services/users.service';
@@ -21,7 +21,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.regForm = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
       'name': new FormControl(null, [Validators.required]),
       'agree': new FormControl(false, [Validators.requiredTrue])
@@ -39,6 +39,19 @@ export class RegistrationComponent implements OnInit {
           }
         });
       });
+  }
+
+  forbiddenEmails(control: AbstractControl): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.usersService.getUserByEmail(control.value)
+        .subscribe((user: User) => {
+          if (user) {
+            resolve({forbiddenEmail: true});
+          } else {
+            resolve(null);
+          }
+        });
+    });
   }
 
 }
